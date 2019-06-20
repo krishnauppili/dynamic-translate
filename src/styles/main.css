@@ -2959,10 +2959,16 @@ input:focus:-ms-input-placeholder {
 }
 
 /* Footer */
+
 footer {
     background: #f6f6f6;
     position: relative;
     z-index: 100;
+}
+
+footer .hidden-md-down .container:last-child > span{
+    margin-right: 3%;
+    word-break: break-word;
 }
 
 footer accordion-group div,
