@@ -196,6 +196,8 @@ let codeToLanguage = {
     "zu":    "Zulu",
 };
 
+/* Retrieve language from corresponding languge code*/
+
 export function getLanguageFromCode(code){
     code = code.toLowerCase();
     let codeArray = code.split("-");
