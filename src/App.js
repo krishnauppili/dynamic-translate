@@ -1,10 +1,6 @@
 import React,{Component} from 'react';
 import '../src/styles/main.css';
 import Main from "./views/main";
-import Papa from "papaparse";
-import * as data from "./lib/data.csv";
-import {translateContent} from "./lib/utils";
-import {getLanguageFromCode} from "./lib/constants";
 import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import createSagaMiddleware from "redux-saga";

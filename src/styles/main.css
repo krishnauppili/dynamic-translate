@@ -3027,7 +3027,6 @@ footer .hidden-md-down .container:last-child {
 footer .hidden-md-down .container:last-child .social-footer {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     font-size: 18px;
     margin-right: 30px;
 }

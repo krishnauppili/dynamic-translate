@@ -1,6 +1,9 @@
 import Papa from "papaparse";
 import * as data from "../../lib/data.csv";
 
+
+/* API call to parse the CSV data and set in local storage */
+
 export const fetchData = async() => {
 	let outputData = [];
 	try {
@@ -37,6 +40,7 @@ export const fetchData = async() => {
 	}
 };
 
+/* API call to translate the given data from source language to destination language */
 
 export const translateContent = ({outputData,fromLanguage,toLanguage}) => {
 	try{
@@ -54,7 +58,7 @@ export const translateContent = ({outputData,fromLanguage,toLanguage}) => {
 						}
 						if(flag === 0){
 							let valueArray = outputValue.split(".");
-							for(let j=0 ; j < valueArray.length ; j++){
+							for(let j = 0; j < valueArray.length; j++){
 								if(valueArray[j]){
 									let value = valueArray[j].trim();
 									let result2 = getTranslatedText(outputData,value,fromLanguage,toLanguage);
@@ -78,6 +82,9 @@ export const translateContent = ({outputData,fromLanguage,toLanguage}) => {
 		return false;
 	}
 };
+
+
+/* Utility to return the matching text in the destination language from data store*/
 
 export function getTranslatedText(outputData,originalText,fromLanguage,toLanguage){
 	let outputRow = outputData.find((element)=>{

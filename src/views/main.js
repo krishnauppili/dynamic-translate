@@ -24,6 +24,7 @@ class Main extends Component{
 
     render() {
         return(
+
             <div>
                 <div className="cover-image-gv">
                     <div className="banner-overlay global">
@@ -33,8 +34,13 @@ class Main extends Component{
                         </div>
                     </div>
                 </div>
+
+                {/* Global body component */}
                 <GlobalBody/>
+
+                {/* Footer component */}
                 <Footer/>
+
             </div>
         )
     }

@@ -4,6 +4,11 @@ import * as API from "../api/app_api";
 /* App Constants */
 import {CHANGE_LANGUAGE, REQUEST_FETCH_DATA, REQUEST_TRANSLATE_CONTENT} from "../definitions/app_constants";
 
+
+/* ==================================================================================================== */
+
+/* Executor Sagas */
+
 function* translateContentFlow ({ outputData , fromLanguage , toLanguage }) {
 	let response;
 	try{
@@ -41,9 +46,9 @@ function* fetchDataFlow ({ fromLanguage , toLanguage }) {
 	}
 }
 
+/* ==================================================================================================== */
 
-
-/*Watcher sagas*/
+/* Watcher sagas */
 
 function* translateContentWatcher () {
 	while(true){
@@ -59,7 +64,9 @@ function* dataFetchWatcher () {
 	}
 }
 
-/* Combine watchers*/
+/* ==================================================================================================== */
+
+/* Combine watchers */
 
 export default function* AuthSaga() {
 	yield  all([
@@ -67,3 +74,5 @@ export default function* AuthSaga() {
 		dataFetchWatcher(),
 	]);
 }
+
+/* ==================================================================================================== */

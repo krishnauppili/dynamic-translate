@@ -2,6 +2,9 @@ import React,{Component} from 'react';
 import AppContainer from "../../store/containers/app_container";
 class Footer extends Component{
 
+
+    /* Handle change for select component*/
+
     handleChange = (e) =>{
         const fromLanguage = this.props.currentLanguage;
         const toLanguage = e.target.value;

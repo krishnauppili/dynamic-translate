@@ -1,3 +1,4 @@
+/*
 export function translateContent(outputData,fromLanguage,toLanguage){
     let items = document.body.getElementsByTagName("*");
     for (let i = 0, len = items.length; i < len; i++) {
@@ -38,4 +39,4 @@ export function getTranslatedText(outputData,originalText,fromLanguage,toLanguag
         return element[fromLanguage].trim().toLowerCase() === originalText.trim().toLowerCase();
     });
     return outputRow ? outputRow[toLanguage] : undefined;
-}
+}*/
