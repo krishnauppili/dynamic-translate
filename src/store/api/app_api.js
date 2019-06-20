@@ -21,9 +21,11 @@ export const fetchData = async() => {
 					localStorage.setItem("output_data",JSON.stringify(outputData));
 					response.success = true;
 					response.data = outputData;
+					resolve(response);
+				},error: function(errors){
+					console.log("Errors in papa parser",errors);
 				}
 			});
-			resolve(response);
 		});
 	} catch (e) {
 		console.log("Error",e);
