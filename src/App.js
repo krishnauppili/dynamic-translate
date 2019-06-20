@@ -7,8 +7,14 @@ import createSagaMiddleware from "redux-saga";
 import RootSaga from "./store/sagas";
 import RootReducer from "./store/reducers";
 
+/* Initialize Saga middleware */
 const sagaMiddleware = createSagaMiddleware();
+
+/* Initialize store with Root Reducer and Saga middleware*/
+
 const store = createStore(RootReducer,applyMiddleware(sagaMiddleware));
+
+/* Running Root Saga */
 sagaMiddleware.run(RootSaga);
 
 
@@ -24,5 +30,4 @@ class App extends Component {
         );
     }
 }
-
 export default App;
