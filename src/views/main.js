@@ -3,22 +3,8 @@ import Footer from "./Footer";
 import GlobalBody from "./GlobalBody";
 import AppContainer from "../store/containers/app_container";
 import {getLanguageFromCode} from "../lib/constants";
-import {translateContent} from "../lib/utils";
-import Papa from "papaparse";
-import * as data from "../lib/data.csv";
-import {translateContentAction} from "../store/actions/app_actions";
 
 class Main extends Component{
-
-    /*constructor(props){
-        super(props);
-        const nativeLanguage = navigator.language;
-        console.log("Language code",nativeLanguage);
-        this.state = {
-            language:getLanguageFromCode(nativeLanguage),
-        };
-        this.outputData = JSON.parse(localStorage.getItem("output_data"));
-    }*/
 
     componentDidMount() {
         const fromLanguage = this.props.currentLanguage;
@@ -30,6 +16,10 @@ class Main extends Component{
         else{
             this.props.fetchDataAction(fromLanguage,toLanguage);
         }
+    }
+
+    componentWillUnmount() {
+        localStorage.removeItem("output_data");
     }
 
     render() {
