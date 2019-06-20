@@ -12,8 +12,6 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		dataStore:state.app.dataStore,
-		languagesAvailable: state.app.languagesAvailable,
 		currentLanguage: state.app.currentLanguage,
 	};
 }
