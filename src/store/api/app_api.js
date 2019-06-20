@@ -5,15 +5,14 @@ export const fetchData = async() => {
 	let outputData = [];
 	try {
 		return await new Promise((resolve)=>{
-			let response={};
+			let response = {};
 			Papa.parse(data, {
 				download:true,
 				complete: function(results) {
-					console.log("Results in papa parse",results);
 					let columnNamesArray = results.data[0];
 					for(let i=1;i<results.data.length;i++){
 						let currentRow = {};
-						for(let j=0;j<results.data[i].length;j++){
+						for(let j = 0; j < results.data[i].length; j++){
 							currentRow[columnNamesArray[j]] = results.data[i][j];
 						}
 						outputData.push(currentRow);
@@ -22,13 +21,15 @@ export const fetchData = async() => {
 					response.success = true;
 					response.data = outputData;
 					resolve(response);
-				},error: function(errors){
-					console.log("Errors in papa parser",errors);
+				},error: function(e){
+					return {
+						success:false,
+						message:"Something went wrong",
+					};
 				}
 			});
 		});
 	} catch (e) {
-		console.log("Error",e);
 		return {
 			success:false,
 			message:"Something went wrong",
