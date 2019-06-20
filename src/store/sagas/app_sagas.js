@@ -21,15 +21,21 @@ function* translateContentFlow ({outputData,fromLanguage,toLanguage}) {
 function* fetchDataFlow ({fromLanguage,toLanguage}) {
 	let response;
 	try {
-		response = yield call(API.fetchData,{fromLanguage,toLanguage});
+		response =  yield call(API.fetchData,{fromLanguage,toLanguage});
 		console.log("Response in fetch data flow",response);
+		if(response.success){
+			yield fork(translateContentFlow, {
+				outputData:response.data,
+				fromLanguage:fromLanguage,
+				toLanguage:toLanguage
+			});
+		}
 	}
 	catch (error) {
 		console.log("Error in fetch data",error);
 	}
 	return response;
 }
-
 
 /*Watcher sagas*/
 
@@ -43,17 +49,7 @@ function* translateContentWatcher () {
 function* dataFetchWatcher () {
 	while(true){
 		const object  = yield take(REQUEST_FETCH_DATA);
-		console.log("Object",object);
-		const response = yield call(fetchDataFlow, object.payload);
-		yield delay(1000);
-		if(response.success){
-			console.log("Success response");
-			yield fork(translateContentFlow, {
-				outputData:response.data,
-				fromLanguage:object.payload.fromLanguage,
-				toLanguage:object.payload.toLanguage
-			});
-		}
+		const response = yield fork(fetchDataFlow, object.payload);
 	}
 }
 
